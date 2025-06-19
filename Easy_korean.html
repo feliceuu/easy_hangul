@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <title>Easy Korean - Нүүр</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Easy Korean 🌸</h1>
+    <p>Солонгос хэлийг амархан, ойлгомжтойгоор сурцгаая!</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Нүүр</a></li>
+        <li><a href="hangul.html">Хангыл</a></li>
+        <li><a href="vocabulary.html">Үгс</a></li>
+        <li><a href="grammar.html">Дүрэм</a></li>
+        <li><a href="dialogue.html">Яриа</a></li>
+        <li><a href="practice.html">Дадлага</a></li>
+        <li><a href="contact.html">Холбоо</a></li>
+      </ul>
+    </nav>
+    <button id="darkModeToggle" style="margin-top: 10px; padding: 8px 16px; border-radius: 10px; border:none; cursor:pointer; background:#ff69b4; color:#fff;">
+      Dark Mode асаах/унтраах
+    </button>
+  </header>
+
+  <main>
+    <section>
+      <h2>Сайн байна уу!</h2>
+      <p><strong>Easy Korean</strong> сайт нь анхан шатны суралцагчдад зориулсан бөгөөд Хангыл үсгээс эхлээд дүрэм, үгс, харилцан яриа хүртэл цогц байдлаар заах болно.</p>
+      <p>Жишээ үгсийг доорх товчлуураар сонсоорой:</p>
+      <p>
+        감사합니다
+        <button class="audio-btn" onclick="playAudio('audio1')">▶️ Сонсох</button>
+        <audio id="audio1" src="audio/kamsahamnida.mp3"></audio>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Easy Korean. Бүх эрх хуулиар хамгаалагдсан.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <title>Easy Korean - Хангыл үсэг</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .letter-card {
+      display: inline-block;
+      margin: 20px;
+      padding: 20px;
+      border: 2px solid #ff69b4;
+      border-radius: 15px;
+      text-align: center;
+      width: 150px;
+      font-size: 3em;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.3s ease;
+      background: #fff0f5;
+    }
+    .letter-card:hover {
+      transform: scale(1.2);
+      background: #ffb6c1;
+    }
+    .pronunciation {
+      font-size: 1.2em;
+      margin-top: 10px;
+      color: #a83258;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Хангыл үсэг</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">Нүүр</a></li>
+      <li><a href="hangul.html">Хангыл</a></li>
+      <li><a href="vocabulary.html">Үгс</a></li>
+      <li><a href="grammar.html">Дүрэм</a></li>
+      <li><a href="dialogue.html">Яриа</a></li>
+      <li><a href="practice.html">Дадлага</a></li>
+      <li><a href="contact.html">Холбоо</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main style="max-width: 900px; margin: 40px auto; text-align:center;">
+  <p>Доорх үсэг дээр дарж, дуудлагыг сонсоорой.</p>
+  <div id="letters-container">
+    <!-- Үсгүүдийг энд үүсгэнэ -->
+  </div>
+</main>
+
+<footer style="text-align:center; padding: 20px; background:#ffb6c1; color:#444;">
+</footer>
+
+<script>
+  // Хангылын анхан шатны 5 том эгшигийн жишээ
+  const letters = [
+    {char: "ㅏ", sound: "a", audio: "https://ttsmp3.com/created_mp3/02a4e00f5c4e252d0b7f78b7c3b5f0f7.mp3"},
+    {char: "ㅑ", sound: "ya", audio: "https://ttsmp3.com/created_mp3/d0c7b58a03f68a009c4d9a4d94d13efc.mp3"},
+    {char: "ㅓ", sound: "eo", audio: "https://ttsmp3.com/created_mp3/91e37332ab4f1f531a6c1dfeb2393e47.mp3"},
+    {char: "ㅕ", sound: "yeo", audio: "https://ttsmp3.com/created_mp3/ff15a60b7f8dd06c140dad46aef8d0ae.mp3"},
+    {char: "ㅗ", sound: "o", audio: "https://ttsmp3.com/created_mp3/bf6a6f3aaafc6c9a27990d2e533e7ff0.mp3"}
+  ];
+
+  const container = document.getElementById("letters-container");
+
+  letters.forEach(({char, sound, audio}) => {
+    const card = document.createElement("div");
+    card.className = "letter-card";
+    card.tabIndex = 0;  // Товчлуурын фокус авахад зориулсан
+    
+    card.innerHTML = `
+      <div>${char}</div>
+      <div class="pronunciation">${sound}</div>
+      <button onclick="playSound('${audio}')" style="margin-top:10px; padding:6px 12px; border:none; border-radius:8px; background:#ff69b4; color:#fff; cursor:pointer;">▶️ Сонсох</button>
+    `;
+
+    container.appendChild(card);
+  });
+
+  function playSound(src) {
+    const audio = new Audio(src);
+    audio.play();
+  }
+</script>
+
+</body>
+</html>
